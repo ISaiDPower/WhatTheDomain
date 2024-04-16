@@ -23,21 +23,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($tld_list) {
         while (($line = fgets($tld_list)) !== false) {
             $tld = strtolower($line);
-            switch (strlen($tld)) {
-                case 2:
-                    if ($top_two == $tld) {
-                        $possible_two[] = $word_w_two . "." . $tld;
-                    }
-                    break;
-                case 3:
-                    if ($top_three == $tld) {
-                        $possible_three[] = $word_w_three . "." . $tld;
-                    }
-                    break;
-                case 4:
-                    if ($top_four == $tld) {
-                        $possible_four[] = $word_w_four . "." . $tld;
-                    }
+            $tld = str_replace("\n", '', $tld);
+            if (strcmp($tld, $top_two) == 0) {
+                $possible_two[] = $word_w_two . "." . $tld;
+            }
+            if (strcmp($tld, $top_three) == 0) {
+                $possible_three[] = $word_w_three . "." . $tld;
+            }
+            if (strcmp($tld, $top_four) == 0) {
+                $possible_four[] = $word_w_four . "." . $tld;
             }
         }
         fclose($tld_list);
