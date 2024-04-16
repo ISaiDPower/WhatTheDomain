@@ -1,6 +1,6 @@
 <?php
 $ok = false;
-if (!isset($_GET['q']) || $_GET['q'] == '') {
+if (isset($_GET['q']) && $_GET['q'] == '') {
     echo '<script>alert("Invalid form submission.")</script>';
 } else {
     $top_two = substr($_GET['q'], -2);
@@ -47,7 +47,6 @@ if (!isset($_GET['q']) || $_GET['q'] == '') {
                 <div class="col"><button class="btn btn-primary" type="submit">Send</button></div>
             </div>
         </form>
-        <h4 class="text-center" style="margin-top: 8px;">Total number of domains: 0</h4>
     </div>
     <div class="container" style="margin-top: 23px;">
         <ul class="list-group">
