@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: application/json");
+header("Allow-Control-Allow-Origin: *");
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (!isset($_GET['q']) || $_GET['q'] == "") {
         http_response_code(400);
