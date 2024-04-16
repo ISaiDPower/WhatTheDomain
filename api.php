@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json");
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (!isset($_GET['q'])) {
+    if (!isset($_GET['q']) || $_GET['q'] == "") {
         http_response_code(400);
         die(json_encode([
             'error' => 'No query string provided.'
@@ -42,5 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         'two_letter_tld' => $possible_two,
         'three_letter_tld' => $possible_three,
         'four_letter_tld' => $possible_four,
+    ]));
+} else {
+    http_response_code(405);
+    exit(json_encode([
+        'error' => 'Invalid method, please use GET.'
     ]));
 }
